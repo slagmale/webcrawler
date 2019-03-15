@@ -39,12 +39,12 @@ def write_to_file(content):
         # f.write(content) # TypeError: write() argument must be str, not dict
 
 def main(offset):
-    url = 'https://movie.douban.com/top250?start=' + str(offset) + '&filter='
+    url = 'https://movie.douban.com/top250?start=' + str(offset) + '&filter='  #
     html = get_one_page(url)
     for item in parse_html(html):
         write_to_file(item)
 
 if __name__ == '__main__':
     for i in range(10):
-        main(i * 25)
+        main(i * 25)  # 页面规律 offset 由0-255分别对应 1-10页  实现分页爬
         time.sleep(1)
