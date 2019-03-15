@@ -4,7 +4,6 @@ import json
 from requests import RequestException
 import time
 
-
 # 得到一个页面的文本
 def get_one_page(url):
     try:
@@ -17,7 +16,6 @@ def get_one_page(url):
         return None
     except RequestException:
         return None
-
 
 # 解析文本得到信息
 def parse_html(html):
@@ -33,7 +31,6 @@ def parse_html(html):
             'score': item[3]  # 评分
         }
 
-
 def write_to_file(content):
     with open('results.txt', 'a', encoding='utf-8') as f:
         # print(type(json.dumps(content))) # josn.dumps实现字典的序列化  将obj转换为str
@@ -41,13 +38,11 @@ def write_to_file(content):
                            ensure_ascii=False) + '\n')  # json.dumps 序列化时对中文默认使用的ascii编码.想输出真正的中文需要指定ensure_ascii=False
         # f.write(content) # TypeError: write() argument must be str, not dict
 
-
 def main(offset):
     url = 'https://movie.douban.com/top250?start=' + str(offset) + '&filter='
     html = get_one_page(url)
     for item in parse_html(html):
         write_to_file(item)
-
 
 if __name__ == '__main__':
     for i in range(10):
