@@ -9,6 +9,7 @@ print(len(content))
 \w 匹配字母、数字 下划线
 
 match 方法第一个从参数 正则表达式  第二个参数传入要匹配的字符串
+从头开始匹配
 '''
 result = re.match('^Hello\s\d\d\d\s\d{4}\s\w{10}', content)
 print(result)
@@ -46,4 +47,3 @@ content4 = '''Hello 1234567 World_This is
 result8  = re.match('^He.*?(\d+).*?Demo$',content4,re.S)  # re.S 使.匹配包括换行符在内的所有字符
 print(result8.group(1))
 
-#
