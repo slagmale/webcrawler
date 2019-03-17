@@ -39,7 +39,7 @@ def write_to_file(content):
         # f.write(content) # TypeError: write() argument must be str, not dict
 
 def main(offset):
-    url = 'https://movie.douban.com/top250?start=' + str(offset) + '&filter='  #
+    url = 'https://movie.douban.com/top250?start=' + str(offset) + '&filter='
     html = get_one_page(url)
     for item in parse_html(html):
         write_to_file(item)
